@@ -29,10 +29,10 @@ Signed-off-by: Coly Li <bosong.ly@taobao.com>
  create mode 100644 net/toa/toa.c
  create mode 100644 net/toa/toa.h
 
-Index: linux-2.6.32-220.23.1.el5/net/Kconfig
+Index: linux-3.10.0-327.36.3.el7/net/Kconfig
 ===================================================================
---- linux-2.6.32-220.23.1.el5.orig/net/Kconfig
-+++ linux-2.6.32-220.23.1.el5/net/Kconfig
+--- linux-3.10.0-327.36.3.el7.orig/net/Kconfig
++++ linux-3.10.0-327.36.3.el7/net/Kconfig
 @@ -49,6 +49,7 @@ source "net/packet/Kconfig"
  source "net/unix/Kconfig"
  source "net/xfrm/Kconfig"
@@ -41,19 +41,19 @@ Index: linux-2.6.32-220.23.1.el5/net/Kconfig
  
  config INET
  	bool "TCP/IP networking"
-Index: linux-2.6.32-220.23.1.el5/net/Makefile
+Index: linux-3.10.0-327.36.3.el7/net/Makefile
 ===================================================================
---- linux-2.6.32-220.23.1.el5.orig/net/Makefile
-+++ linux-2.6.32-220.23.1.el5/net/Makefile
+--- linux-3.10.0-327.36.3.el7.orig/net/Makefile
++++ linux-3.10.0-327.36.3.el7/net/Makefile
 @@ -65,3 +65,4 @@ ifeq ($(CONFIG_NET),y)
  obj-$(CONFIG_SYSCTL)		+= sysctl_net.o
  endif
  obj-$(CONFIG_WIMAX)		+= wimax/
 +obj-$(CONFIG_TOA)		+= toa/
-Index: linux-2.6.32-220.23.1.el5/net/toa/Kconfig
+Index: linux-3.10.0-327.36.3.el7/net/toa/Kconfig
 ===================================================================
 --- /dev/null
-+++ linux-2.6.32-220.23.1.el5/net/toa/Kconfig
++++ linux-3.10.0-327.36.3.el7/net/toa/Kconfig
 @@ -0,0 +1,9 @@
 +config	TOA
 +	tristate "The private TCP option for support Taobao LVS full-NAT feature"
@@ -64,19 +64,19 @@ Index: linux-2.6.32-220.23.1.el5/net/toa/Kconfig
 +	  after LVS performed NAT on it. So far, this module supports IPv4 and IPv6.
 +
 +	  Say m if unsure.
-Index: linux-2.6.32-220.23.1.el5/net/toa/Makefile
+Index: linux-3.10.0-327.36.3.el7/net/toa/Makefile
 ===================================================================
 --- /dev/null
-+++ linux-2.6.32-220.23.1.el5/net/toa/Makefile
++++ linux-3.10.0-327.36.3.el7/net/toa/Makefile
 @@ -0,0 +1,4 @@
 +#
 +# Makefile for TOA module.
 +#
 +obj-$(CONFIG_TOA) += toa.o
-Index: linux-2.6.32-220.23.1.el5/net/toa/toa.c
+Index: linux-3.10.0-327.36.3.el7/net/toa/toa.c
 ===================================================================
 --- /dev/null
-+++ linux-2.6.32-220.23.1.el5/net/toa/toa.c
++++ linux-3.10.0-327.36.3.el7/net/toa/toa.c
 @@ -0,0 +1,393 @@
 +#include "toa.h"
 +
@@ -471,10 +471,10 @@ Index: linux-2.6.32-220.23.1.el5/net/toa/toa.c
 +module_init(toa_init);
 +module_exit(toa_exit);
 +MODULE_LICENSE("GPL");
-Index: linux-2.6.32-220.23.1.el5/net/toa/toa.h
+Index: linux-3.10.0-327.36.3.el7/net/toa/toa.h
 ===================================================================
 --- /dev/null
-+++ linux-2.6.32-220.23.1.el5/net/toa/toa.h
++++ linux-3.10.0-327.36.3.el7/net/toa/toa.h
 @@ -0,0 +1,105 @@
 +#ifndef __NET__TOA_H__
 +#define __NET__TOA_H__
@@ -581,15 +581,14 @@ Index: linux-2.6.32-220.23.1.el5/net/toa/toa.h
 +	(per_cpu_ptr(mib, smp_processor_id())->mibs[field]++)
 +
 +#endif
-Index: linux-2.6.32-220.23.1.el5/include/net/sock.h
+Index: linux-3.10.0-327.36.3.el7/include/net/sock.h
 ===================================================================
---- linux-2.6.32-220.23.1.el5.orig/include/net/sock.h
-+++ linux-2.6.32-220.23.1.el5/include/net/sock.h
-@@ -301,6 +301,7 @@ struct sock {
+--- linux-3.10.0-327.36.3.el7.orig/include/net/sock.h
++++ linux-3.10.0-327.36.3.el7/include/net/sock.h
+@@ -429,5 +429,6 @@ struct sock {
    	int			(*sk_backlog_rcv)(struct sock *sk,
  						  struct sk_buff *skb);  
  	void                    (*sk_destruct)(struct sock *sk);
 +	__be32			sk_toa_data[8];
- };
  
- /*
+	/* RHEL SPECIFIC
