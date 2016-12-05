@@ -9,6 +9,7 @@ tar -jxvf linux-2.6.32-642.11.1.el6.tar.bz2
 wget https://raw.githubusercontent.com/xiaomatech/toa.patch/master/centos6.8-toa.patch
 cd linux-2.6.32-642.11.1.el6
 patch -p1 < ~/rpmbuild/SOURCES/centos6.8-toa.patch
+cd ~/rpmbuild/SOURCES
 tar -cjvf linux-2.6.32-642.11.1.el6.tar.bz2 linux-2.6.32-642.11.1.el6
 
 rpmbuild -bb ~/rpmbuild/SPECS/kernel.spec

@@ -10,6 +10,8 @@ tar -xvf linux-3.10.0-327.36.3.el7.tar
 wget https://raw.githubusercontent.com/xiaomatech/toa.patch/master/centos7.2-toa.patch
 cd linux-3.10.0-327.36.3.el7
 patch -p1 < ~/rpmbuild/SOURCES/centos7.2-toa.patch
+
+cd ~/rpmbuild/SOURCES
 tar cvf linux-3.10.0-327.36.3.el7.tar linux-3.10.0-327.36.3.el7
 xz -z linux-3.10.0-327.36.3.el7.tar
 
