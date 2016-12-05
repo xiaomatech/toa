@@ -1,22 +1,11 @@
 ### toa.patch
 source https://github.com/alibaba/ali_kernel_rpm/blob/6u/patches.taobao/toa.patch
 
-alibaba toa patch in centos 7.2
+alibaba toa patch in centos 6.8/7.2
 
 
 #使用方法
-#下载centos官方src.rpm
-- rpm -ivh http://vault.centos.org/centos/7.2.1511/updates/Source/SPackages/kernel-3.10.0-327.36.3.el7.src.rpm
-- cd ~/rpmbuild/SOURCES
-- xz -d linux-3.10.0-327.36.3.el7.tar.xz
-- tar -xvf linux-3.10.0-327.36.3.el7.tar
+- centos 6.8 : curl https://raw.githubusercontent.com/xiaomatech/toa.patch/master/toa6.8.sh| bash
+    
+- centos 7.2 : curl https://raw.githubusercontent.com/xiaomatech/toa.patch/master/toa7.2.sh| bash 
 
-#打patch
-- wget https://raw.githubusercontent.com/xiaomatech/toa.patch/master/toa.patch
-- patch -p1 < ~/toa.patch
-- tar -czvf linux-3.10.0-327.36.3.el7.tar.gz linux-3.10.0-327.36.3.el7
-- rm -rf linux-3.10.0-327.36.3.el7.tar linux-3.10.0-327.36.3.el7.tar.xz
-
-#重新编译rpm
-- rpmbuild -bb ~/rpmbuild/SPECS/kernel.spec
-- ll ~/rpmbuild/RPMS/x86_64/
