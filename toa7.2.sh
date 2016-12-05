@@ -17,7 +17,11 @@ xz -z linux-3.10.0-327.36.3.el7.tar
 
 sed -i 's/# % define buildid .local/%define buildid .toa/g' ~/rpmbuild/SPECS/kernel.spec
 rpmbuild -bb ~/rpmbuild/SPECS/kernel.spec
-echo 'build the toa kernel rpm list \n'
+echo 'build the toa kernel rpm list'
+echo ''
 ls -alt ~/rpmbuild/RPMS/x86_64/
-echo 'every realserver is to install ~/rpmbuild/RPMS/x86_64/kernel-3.10.0-327.36.3.el7.toa.x86_64.rpm \n'
-echo 'after install ,reboot realserver \n'
+echo ''
+echo 'every realserver should install ~/rpmbuild/RPMS/x86_64/kernel-3.10.0-327.36.3.el7.toa.x86_64.rpm'
+echo ''
+echo 'after install ,reboot realserver'
+echo ''
