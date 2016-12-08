@@ -46,10 +46,10 @@ Index: linux-2.6.32-642.11.1.el6/net/Makefile
 --- linux-2.6.32-642.11.1.el6.orig/net/Makefile
 +++ linux-2.6.32-642.11.1.el6/net/Makefile
 @@ -65,3 +65,4 @@ ifeq ($(CONFIG_NET),y)
- obj-$(CONFIG_SYSCTL)		+= sysctl_net.o
+ obj-$(CONFIG_SYSCTL)            += sysctl_net.o
  endif
- obj-$(CONFIG_WIMAX)		+= wimax/
-+obj-$(CONFIG_TOA)		+= toa/
+ obj-$(CONFIG_WIMAX)             += wimax/
++obj-$(CONFIG_TOA)               += toa/
 Index: linux-2.6.32-642.11.1.el6/net/toa/Kconfig
 ===================================================================
 --- /dev/null

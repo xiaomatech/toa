@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-yum install -y rpm-build rpmdevtools
+yum install -y rpm-build rpmdevtools yum-utils rng-tools
 rpmdev-setuptree
 
 rpm -ivh http://vault.centos.org/centos/7.2.1511/updates/Source/SPackages/kernel-3.10.0-327.36.3.el7.src.rpm
@@ -16,6 +16,8 @@ tar cvf linux-3.10.0-327.36.3.el7.tar linux-3.10.0-327.36.3.el7
 xz -z linux-3.10.0-327.36.3.el7.tar
 
 sed -i 's/# % define buildid .local/%define buildid .toa/g' ~/rpmbuild/SPECS/kernel.spec
+sudo spectool -g ~/rpmbuild/SPECS/kernel.spec
+sudo yum-builddep -y ~/rpmbuild/SPECS/kernel.spec
 rpmbuild -bb --without kabichk --without debuginfo ~/rpmbuild/SPECS/kernel.spec
 echo 'build the toa kernel rpm list'
 echo ''

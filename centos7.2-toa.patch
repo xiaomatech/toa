@@ -45,7 +45,7 @@ Index: linux-3.10.0-327.36.3.el7/net/Makefile
 ===================================================================
 --- linux-3.10.0-327.36.3.el7.orig/net/Makefile
 +++ linux-3.10.0-327.36.3.el7/net/Makefile
-@@ -65,3 +65,4 @@ ifeq ($(CONFIG_NET),y)
+@@ -62,3 +62,4 @@ ifeq ($(CONFIG_NET),y)
  obj-$(CONFIG_SYSCTL)		+= sysctl_net.o
  endif
  obj-$(CONFIG_WIMAX)		+= wimax/
