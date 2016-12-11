@@ -45,10 +45,8 @@ Index: linux-3.10.0-327.36.3.el7/net/Makefile
 ===================================================================
 --- linux-3.10.0-327.36.3.el7.orig/net/Makefile
 +++ linux-3.10.0-327.36.3.el7/net/Makefile
-@@ -62,3 +62,4 @@ ifeq ($(CONFIG_NET),y)
- obj-$(CONFIG_SYSCTL)		+= sysctl_net.o
- endif
- obj-$(CONFIG_WIMAX)		+= wimax/
+@@ -64,1 +64,2 @@ endif
+ obj-$(CONFIG_WIMAX)             += wimax/
 +obj-$(CONFIG_TOA)		+= toa/
 Index: linux-3.10.0-327.36.3.el7/net/toa/Kconfig
 ===================================================================
@@ -585,10 +583,7 @@ Index: linux-3.10.0-327.36.3.el7/include/net/sock.h
 ===================================================================
 --- linux-3.10.0-327.36.3.el7.orig/include/net/sock.h
 +++ linux-3.10.0-327.36.3.el7/include/net/sock.h
-@@ -429,5 +429,6 @@ struct sock {
-   	int			(*sk_backlog_rcv)(struct sock *sk,
- 						  struct sk_buff *skb);  
- 	void                    (*sk_destruct)(struct sock *sk);
-+	__be32			sk_toa_data[8];
- 
-	/* RHEL SPECIFIC
+@@ -423,2 +423,3 @@ __u32                   sk_mark;
+        u32                     sk_classid;
++		__be32					sk_toa_data[8];
+        struct cg_proto         *sk_cgrp;

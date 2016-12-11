@@ -45,9 +45,7 @@ Index: linux-2.6.32-642.11.1.el6/net/Makefile
 ===================================================================
 --- linux-2.6.32-642.11.1.el6.orig/net/Makefile
 +++ linux-2.6.32-642.11.1.el6/net/Makefile
-@@ -65,3 +65,4 @@ ifeq ($(CONFIG_NET),y)
- obj-$(CONFIG_SYSCTL)            += sysctl_net.o
- endif
+@@ -64,1 +64,2 @@ endif
  obj-$(CONFIG_WIMAX)             += wimax/
 +obj-$(CONFIG_TOA)               += toa/
 Index: linux-2.6.32-642.11.1.el6/net/toa/Kconfig
@@ -585,9 +583,6 @@ Index: linux-2.6.32-642.11.1.el6/include/net/sock.h
 ===================================================================
 --- linux-2.6.32-642.11.1.el6.orig/include/net/sock.h
 +++ linux-2.6.32-642.11.1.el6/include/net/sock.h
-@@ -309,4 +309,5 @@ struct sock {
-   	int			(*sk_backlog_rcv)(struct sock *sk,
- 						  struct sk_buff *skb);  
- 	void                    (*sk_destruct)(struct sock *sk);
+@@ -303,1 +303,2 @@ __u32                   sk_mark;
+        u32                     sk_classid;
 +	__be32			sk_toa_data[8];
- };
