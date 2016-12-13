@@ -12,7 +12,6 @@ patch -p1 < ~/rpmbuild/SOURCES/centos6.8-toa.patch
 cd ~/rpmbuild/SOURCES
 tar -cjvf linux-2.6.32-642.11.1.el6.tar.bz2 linux-2.6.32-642.11.1.el6
 
-export CONFIG_TOA=m
 sed -i 's/# % define buildid .local/%define buildid .toa/g' ~/rpmbuild/SPECS/kernel.spec
 sudo spectool -g ~/rpmbuild/SPECS/kernel.spec
 sudo yum-builddep -y ~/rpmbuild/SPECS/kernel.spec
